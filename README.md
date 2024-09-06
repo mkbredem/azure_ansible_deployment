@@ -71,9 +71,16 @@ You can find these values in an Azure Portal Cloud Shell session:
 ```bash
 az account list --output table --query '[].{Name:name, SubscriptionId:id}'
 ```
-2) use subscription_id from previous command to run:  
+2) use subscription_id from previous command to create a service prinicpal:  
 ```bash
 az ad sp create-for-rbac --name <myname-redhat> --role Contributor --scope /subscriptions/<subscriptionID>
+```
+3) export variables with values obtained from Cloud Shell:
+```bash
+export AZURE_CLIENT_ID="your_client_id"
+export AZURE_SECRET="your_secret"
+export AZURE_SUBSCRIPTION_ID="your_subscription_id"
+export AZURE_TENANT="your_tenant_id"
 ```
 
 The playbooks included in this collection will need a way to connect to the virtual machines that it creates.
