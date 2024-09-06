@@ -65,6 +65,17 @@ The easiest, and most portable, approach will be to set the following env vars.
 - `AZURE_SUBSCRIPTION_ID`
 - `AZURE_TENANT`
 
+**NOTE:**
+You can find these values in an Azure Portal Cloud Shell session:
+1) run: 
+```bash
+az account list --output table --query '[].{Name:name, SubscriptionId:id}'
+```
+2) use subscription_id from previous command to run:  
+```bash
+az ad sp create-for-rbac --name <myname-redhat> --role Contributor --scope /subscriptions/<subscriptionID>
+```
+
 The playbooks included in this collection will need a way to connect to the virtual machines that it creates.
 By default, VMs are created with public IP addresses to make this simple, but the collection may be modified to use private IP addresses if your local machine can route traffic to private networks.
 

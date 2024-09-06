@@ -1,2 +1,3 @@
 ansible_ssh_user: azureuser
 resource_group: aap_on_azure
+infrastructure_create_controller_lb: false
